@@ -42,11 +42,11 @@
 
     <div class="container">
 
-      {% for post in posts %}
+      {% for post in paged_object.object_list %}
       <div class="row news">
         <div class="col-md-12">
           <h4 class="title">
-            <small>{{ forloop.counter }}.</small>
+            <small>{{ start_index|add:forloop.counter }}.</small>
             <a class="up" href="#up"><span class="glyphicon glyphicon-thumbs-up btn-sm"></span></a>
             {% if post.url %}
             <a href="{{ post.url }}">{{ post.title }}</a>
@@ -64,13 +64,21 @@
       </div>
       {% endfor %}
 
+      {% if paged_object.has_other_pages %}
       <ul class="pagination pagination-sm">
-        <li class="disabled"><span>&laquo;</span></li>
-        <li class="active"><a href="#1">1</a></li>
-        <li><a href="#2">2</a></li>
-        <li><a href="#3">3</a></li>
-        <li><a href="#">&raquo;</a></li>
+        {% if paged_object.has_previous %}
+        <li><a href="{% url 'news_list' paged_object.previous_page_number %}">{% trans '上一页' %}</a>
+        {% else %}
+        <li class="disabled"><span>{% trans '上一页' %}</span></li>
+        {% endif %}
+        {% if paged_object.has_next %}
+        <li><a href="{% url 'news_list' paged_object.next_page_number %}">{% trans '下一页' %}</a>
+        {% else %}
+        <li class="disabled"><span>{% trans '下一页' %}</span></li>
+        {% endif %}
       </ul>
+      {% endif %}
+
 
     </div>
 
