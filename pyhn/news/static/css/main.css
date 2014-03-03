@@ -21,6 +21,9 @@ body {
 .news .title a:hover {
   color: #428bca;
 }
+.news .title a:visited {
+  color: #999;
+}
 .news .title .btn-sm {
   padding: 0;
 }
