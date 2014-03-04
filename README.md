@@ -1,4 +1,4 @@
 PyHackerNews
 ============
 
-Hacker News write in Python
+Hacker News written in Python
