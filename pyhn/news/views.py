@@ -1,29 +1,50 @@
 #!/usr/bin/env python
 
 
+import json
+
 from urlparse import urlparse
 import hashlib
 import urllib
 
 from django.core.paginator import EmptyPage, InvalidPage, Paginator
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, render
+from django.views.decorators.http import require_GET, require_POST
 
 from news.models import Post
 
 
+@require_GET
 def index(request, cur_page_num=1):
     cur_page_num = int(cur_page_num)
     num_per_page = 30
     posts = Post.objects.all()
     paged_object = get_paged_object(posts, cur_page_num, num_per_page)
     for post in paged_object.object_list:
+        if post.vote_set.filter(user=request.user).count():
+            post.voted = True
+        else:
+            post.voted = False
+
         if post.url:
             post.netloc = urlparse(post.url).netloc
             post.gravatar_url = get_gravatar_url(post.user.email)
+
     return render(request, 'news/index.html', {
         'paged_object': paged_object,
         'start_index': num_per_page * (cur_page_num - 1),
     })
+
+@require_POST
+def vote(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    if post.vote_set.filter(user=request.user).count():
+        ret = {'code': 100, 'msg': 'has voted', 'result': {'id': post_id}}
+    else:
+        post.vote(request.user)
+        ret = {'code': 0, 'msg': 'success', 'result': {'id': post_id}}
+    return HttpResponse(json.dumps(ret, ensure_ascii=False))
 
 
 def get_gravatar_url(email):

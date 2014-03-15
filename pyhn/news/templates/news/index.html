@@ -47,7 +47,11 @@
         <div class="col-md-12">
           <h4 class="title">
             <small>{{ start_index|add:forloop.counter }}.</small>
-            <a class="up" href="#up"><span class="glyphicon glyphicon-thumbs-up btn-sm"></span></a>
+            <span class="vote">
+              {% if not post.voted %}
+              <a class="up" href="{% url 'news_vote' post.id %}"><span class="glyphicon glyphicon-thumbs-up btn-sm"></span></a>
+              {% endif %}
+            </span>
             {% if post.url %}
             <a href="{{ post.url }}">{{ post.title }}</a>
             {% else %}
@@ -55,11 +59,14 @@
             {% endif %}
             <small>{% if post.netloc %}{{ post.netloc }}{% endif %}</small>
           </h4>
-          <h6 class="sub"><small>
-            <a href="#author"><img src="{{ post.gravatar_url }}" /> {{ post.user.username }}</a> |
-            时间：{{ post.created_at|timesince }} ago |
-            评论：<a href="#comment"><span class="glyphicon glyphicon-comment"></span> 32</a>
-          </small></h6>
+          <h6 class="sub">
+            <small>
+              <span id="id-point-{{ post.id }}">{{ post.vote_set.count }}</span> point |
+              {% trans '投递：' %}<a href="#author"><img src="{{ post.gravatar_url }}" /> {{ post.user.username }}</a> |
+              {% trans '时间：' %}{{ post.created_at|timesince }} ago |
+              {% trans '评论：' %}<a href="#comment"><span class="glyphicon glyphicon-comment"></span> 32</a>
+            </small>
+          </h6>
         </div>
       </div>
       {% endfor %}
@@ -89,6 +96,8 @@
     </div>
 
     <script src="{% static 'libs/jquery-1.11.0.min.js' %}"></script>
+    <script src="{% static 'libs/jquery.cookie.js' %}"></script>
     <script src="{% static 'libs/bootstrap-3.1.1-dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
   </body>
 </html>

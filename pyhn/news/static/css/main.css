@@ -27,6 +27,10 @@ body {
 .news .title .btn-sm {
   padding: 0;
 }
+.news .title .vote {
+  display: inline-block;
+  width: 12px;
+}
 .news .title a.up:hover {
   color: #d9534f;
 }

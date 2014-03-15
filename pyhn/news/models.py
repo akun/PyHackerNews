@@ -2,6 +2,7 @@
 
 
 from django.db import models
+from django.utils import timezone
 
 
 class Post(models.Model):
@@ -10,6 +11,36 @@ class Post(models.Model):
     url = models.URLField(null=True, blank=True)
     content = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    score = models.FloatField()
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['-score', '-created_at']
+
+    def __unicode__(self):
+        return self.title
+
+    def vote(self, user):
+        """
+        ref: http://www.ruanyifeng.com/blog/2012/02/ranking_algorithm_hacker_news.html
+        """
+
+        Vote.objects.create(user=user, post=self)
+
+        p = self.vote_set.count()
+        p = p - 1 if p > 0 else 0
+        timedelta = (timezone.now() - self.created_at)
+        t = timedelta.days * 24 + timedelta.seconds / 3600
+        g = 1.8
+        score = p / (t + 2)**g
+        self.score = score
+        self.save()
+
+        return score
+
+
+class Vote(models.Model):
+    user = models.ForeignKey('auth.User')
+    post = models.ForeignKey('Post')
+
+    def __unicode__(self):
+        return '%s, %s' % (self.user.username, self.post.title)
