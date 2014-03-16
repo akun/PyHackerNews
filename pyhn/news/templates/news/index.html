@@ -35,13 +35,14 @@
             <li class="active"><a href="#">{% trans 'News' %}</a></li>
             <li><a href="#">{% trans '最新' %}</a></li>
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">{% if gravatar_url %}<img src="{{ gravatar_url }}" />{% endif %} {{ request.user.username }}</a></li>
+          </ul>
         </div>
       </div>
     </div>
 
-
     <div class="container">
-
       {% for post in paged_object.object_list %}
       <div class="row news">
         <div class="col-md-12">
@@ -85,8 +86,6 @@
         {% endif %}
       </ul>
       {% endif %}
-
-
     </div>
 
     <div id="footer">

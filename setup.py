@@ -23,6 +23,7 @@ setup(
     package_dir={'pyhn': 'pyhn'},
     install_requires=[
         'Django==1.6.2',
+        'python-social-auth==0.1.22',
         'nose==1.3.0',
         'Sphinx==1.1.3',
     ],
