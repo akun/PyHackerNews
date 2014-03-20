@@ -1,0 +1,25 @@
+{% extends 'news/base.html' %}
+{% load i18n %}
+
+{% block container %}
+
+{% for post in paged_object.object_list %}
+{% include "news/item.html" %}
+{% endfor %}
+
+{% if paged_object.has_other_pages %}
+<ul class="pagination pagination-sm">
+  {% if paged_object.has_previous %}
+  <li><a href="{% url 'news:list' paged_object.previous_page_number %}">{% trans '上一页' %}</a>
+  {% else %}
+  <li class="disabled"><span>{% trans '上一页' %}</span></li>
+  {% endif %}
+  {% if paged_object.has_next %}
+  <li><a href="{% url 'news:list' paged_object.next_page_number %}">{% trans '下一页' %}</a>
+  {% else %}
+  <li class="disabled"><span>{% trans '下一页' %}</span></li>
+  {% endif %}
+</ul>
+{% endif %}
+
+{% endblock %}

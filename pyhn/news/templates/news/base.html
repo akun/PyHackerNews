@@ -44,49 +44,7 @@
     </div>
 
     <div class="container">
-      {% for post in paged_object.object_list %}
-      <div class="row news">
-        <div class="col-md-12">
-          <h4 class="title">
-            <small>{{ start_index|add:forloop.counter }}.</small>
-            <span class="vote">
-              {% if not post.voted %}
-              <a class="up" href="{% url 'news:vote' post.id %}"><span class="glyphicon glyphicon-thumbs-up btn-sm"></span></a>
-              {% endif %}
-            </span>
-            {% if post.url %}
-            <a href="{{ post.url }}">{{ post.title }}</a>
-            {% else %}
-            <a href="#self">{{ post.title }}</a>
-            {% endif %}
-            <small>{% if post.netloc %}{{ post.netloc }}{% endif %}</small>
-          </h4>
-          <h6 class="sub">
-            <small>
-              <span id="id-point-{{ post.id }}">{{ post.vote_set.count }}</span> point |
-              {% trans '投递：' %}<a href="#author"><img src="{{ post.gravatar_url }}" /> {{ post.user.username }}</a> |
-              {% trans '时间：' %}{{ post.created_at|timesince }} ago |
-              {% trans '评论：' %}<a href="#comment"><span class="glyphicon glyphicon-comment"></span> 32</a>
-            </small>
-          </h6>
-        </div>
-      </div>
-      {% endfor %}
-
-      {% if paged_object.has_other_pages %}
-      <ul class="pagination pagination-sm">
-        {% if paged_object.has_previous %}
-        <li><a href="{% url 'news:list' paged_object.previous_page_number %}">{% trans '上一页' %}</a>
-        {% else %}
-        <li class="disabled"><span>{% trans '上一页' %}</span></li>
-        {% endif %}
-        {% if paged_object.has_next %}
-        <li><a href="{% url 'news:list' paged_object.next_page_number %}">{% trans '下一页' %}</a>
-        {% else %}
-        <li class="disabled"><span>{% trans '下一页' %}</span></li>
-        {% endif %}
-      </ul>
-      {% endif %}
+      {% block container %}{% endblock %}
     </div>
 
     <div id="footer">

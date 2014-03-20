@@ -10,36 +10,31 @@ import urllib
 from django.core.paginator import EmptyPage, InvalidPage, Paginator
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
-from django.views.decorators.http import require_GET, require_POST
+from django.views.decorators.http import require_GET, require_POST, require_http_methods
 
 from news.models import Post
 
 
 @require_GET
 def index(request, cur_page_num=1):
-    is_authenticated = request.user.is_authenticated()
     cur_page_num = int(cur_page_num)
     num_per_page = 30
 
     posts = Post.objects.all()
     paged_object = get_paged_object(posts, cur_page_num, num_per_page)
     for post in paged_object.object_list:
-        post.voted = False
-        if is_authenticated and post.vote_set.filter(user=request.user).count():
-            post.voted = True
-        if post.url:
-            post.netloc = urlparse(post.url).netloc
-            post.gravatar_url = get_gravatar_url(post.user.email)
+        format_post(request, post)
 
     gravatar_url = None
-    if is_authenticated:
+    if request.user.is_authenticated():
         email = request.user.email
         gravatar_url = get_gravatar_url(email)
 
-    return render(request, 'news/index.html', {
+    return render(request, 'news/list.html', {
         'paged_object': paged_object,
         'start_index': num_per_page * (cur_page_num - 1),
         'gravatar_url': gravatar_url,
+        'show_index': True,
     })
 
 @require_POST
@@ -51,6 +46,29 @@ def vote(request, post_id):
         post.vote(request.user)
         ret = {'code': 0, 'msg': 'success', 'result': {'id': post_id}}
     return HttpResponse(json.dumps(ret, ensure_ascii=False))
+
+@require_http_methods(['GET', 'POST'])
+def comment(request, post_id):
+    if request.method == 'GET':
+        post = get_object_or_404(Post, id=post_id)
+        format_post(request, post)
+    else:
+        pass
+    return render(request, 'news/comment.html', {
+        'post': post,
+        'show_index': False,
+    })
+
+
+def format_post(request, post):
+    post.voted = False
+    is_authenticated = request.user.is_authenticated()
+    has_vote = post.vote_set.filter(user=request.user).count()
+    if is_authenticated and has_vote:
+        post.voted = True
+    if post.url:
+        post.netloc = urlparse(post.url).netloc
+        post.gravatar_url = get_gravatar_url(post.user.email)
 
 
 def get_gravatar_url(email):

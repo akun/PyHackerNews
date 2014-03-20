@@ -43,3 +43,6 @@ body {
 .news .sub a:hover {
   color: #428bca;
 }
+.comment .row {
+  padding: 15px 0 0 33px;
+}
