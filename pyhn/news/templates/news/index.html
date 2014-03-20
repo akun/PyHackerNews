@@ -28,15 +28,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Python Hacker News</a>
+          <a class="navbar-brand" href="{% url 'index' %}">Python Hacker News</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">{% trans 'News' %}</a></li>
+            <li class="active"><a href="{% url 'news:index' %}">{% trans 'News' %}</a></li>
             <li><a href="#">{% trans '最新' %}</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">{% if gravatar_url %}<img src="{{ gravatar_url }}" />{% endif %} {{ request.user.username }}</a></li>
+            <li><a href="{% url 'social:begin' 'github' %}">{% trans 'GitHub' %}</a></li>
           </ul>
         </div>
       </div>
@@ -50,7 +51,7 @@
             <small>{{ start_index|add:forloop.counter }}.</small>
             <span class="vote">
               {% if not post.voted %}
-              <a class="up" href="{% url 'news_vote' post.id %}"><span class="glyphicon glyphicon-thumbs-up btn-sm"></span></a>
+              <a class="up" href="{% url 'news:vote' post.id %}"><span class="glyphicon glyphicon-thumbs-up btn-sm"></span></a>
               {% endif %}
             </span>
             {% if post.url %}
@@ -75,12 +76,12 @@
       {% if paged_object.has_other_pages %}
       <ul class="pagination pagination-sm">
         {% if paged_object.has_previous %}
-        <li><a href="{% url 'news_list' paged_object.previous_page_number %}">{% trans '上一页' %}</a>
+        <li><a href="{% url 'news:list' paged_object.previous_page_number %}">{% trans '上一页' %}</a>
         {% else %}
         <li class="disabled"><span>{% trans '上一页' %}</span></li>
         {% endif %}
         {% if paged_object.has_next %}
-        <li><a href="{% url 'news_list' paged_object.next_page_number %}">{% trans '下一页' %}</a>
+        <li><a href="{% url 'news:list' paged_object.next_page_number %}">{% trans '下一页' %}</a>
         {% else %}
         <li class="disabled"><span>{% trans '下一页' %}</span></li>
         {% endif %}
