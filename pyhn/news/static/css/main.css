@@ -37,12 +37,33 @@ body {
 .news .sub {
   padding-left: 35px;
 }
-.news .sub a {
+.news .sub a, .comments a {
   color: #999;
 }
-.news .sub a:hover {
+.news .sub a:hover, .comments a:hover {
   color: #428bca;
 }
-.comment .row {
+.comment .row, .comments {
   padding: 15px 0 0 33px;
+}
+.comments {
+  padding-top: 30px;
+}
+.comments h6 {
+  margin: 15px 10px 10px 10px;
+}
+.comments .tree {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.comments .tree ul, .comments .tree li {
+  list-style-type: none;
+}
+.comments .tree pre {
+  border: 0;
+  background-color: #fff;
+  padding: 0 10px 0;
+  margin-bottom: 0;
 }

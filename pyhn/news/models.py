@@ -44,3 +44,15 @@ class Vote(models.Model):
 
     def __unicode__(self):
         return '%s, %s' % (self.user.username, self.post.title)
+
+
+class Comment(models.Model):
+    user = models.ForeignKey('auth.User')
+    parent = models.ForeignKey('self', null=True, blank=True)
+    post = models.ForeignKey('Post')
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    score = models.FloatField()
+
+    class Meta:
+        ordering = ['-score', '-created_at']

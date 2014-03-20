@@ -12,7 +12,8 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.views.decorators.http import require_GET, require_POST, require_http_methods
 
-from news.models import Post
+from news.forms import CommentForm
+from news.models import Comment, Post
 
 
 @require_GET
@@ -49,14 +50,20 @@ def vote(request, post_id):
 
 @require_http_methods(['GET', 'POST'])
 def comment(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
     if request.method == 'GET':
-        post = get_object_or_404(Post, id=post_id)
         format_post(request, post)
+        form = CommentForm()
     else:
-        pass
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save(request.user, post)
+
+    comments = Comment.objects.filter(parent=None)
     return render(request, 'news/comment.html', {
         'post': post,
         'show_index': False,
+        'comments': comments,
     })
 
 

@@ -21,7 +21,7 @@
         <span id="id-point-{{ post.id }}">{{ post.vote_set.count }}</span> point |
         {% trans '投递：' %}<a href="#author"><img src="{{ post.gravatar_url }}" /> {{ post.user.username }}</a> |
         {% trans '时间：' %}{{ post.created_at|timesince }} ago |
-        {% trans '评论：' %}<a href="{% url 'news:comment' post.id %}"><span class="glyphicon glyphicon-comment"></span> 32</a>
+        {% trans '评论：' %}<a href="{% url 'news:comment' post.id %}"><span class="glyphicon glyphicon-comment"></span> {{ post.comment_set.count }}</a>
       </small>
     </h6>
   </div>
