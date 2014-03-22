@@ -38,6 +38,7 @@ def index(request, cur_page_num=1):
         'show_index': True,
     })
 
+
 @require_POST
 def vote(request, post_id):
     post = get_object_or_404(Post, id=post_id)
@@ -47,6 +48,7 @@ def vote(request, post_id):
         post.vote(request.user)
         ret = {'code': 0, 'msg': 'success', 'result': {'id': post_id}}
     return HttpResponse(json.dumps(ret, ensure_ascii=False))
+
 
 @require_http_methods(['GET', 'POST'])
 def comment(request, post_id):

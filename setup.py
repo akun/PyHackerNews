@@ -24,8 +24,14 @@ setup(
     install_requires=[
         'Django==1.6.2',
         'python-social-auth==0.1.22',
-        'nose==1.3.0',
-        'Sphinx==1.1.3',
+
+        'pylint-django==0.3'
+        'coverage==3.7.1',
+        'django-nose==1.2',
+
+        'Sphinx==1.2.2',
+        'rst2pdf==0.93',
+        'hieroglyph==0.6.5',
     ],
     test_suite='nose.collector',
 )

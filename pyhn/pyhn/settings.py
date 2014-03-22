@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
+    'django_nose',
     'news',
 )
 
@@ -97,3 +98,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 SOCIAL_AUTH_GITHUB_KEY = ''
 SOCIAL_AUTH_GITHUB_SECRET = ''
+
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
