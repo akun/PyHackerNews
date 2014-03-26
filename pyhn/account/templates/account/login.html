@@ -1,0 +1,17 @@
+{% extends 'news/base.html' %}
+{% load i18n %}
+
+{% block container %}
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{% trans '授权登录' %}</h3>
+  </div>
+  <div class="panel-body">
+    <ul>
+      <li><a href="{% url 'social:begin' 'github' %}">{% trans 'GitHub' %}</a></li>
+    </ul>
+  </div>
+</div>
+
+{% endblock %}

@@ -18,15 +18,18 @@ $(document).ready(function () {
 
   $('.up').click(function () {
     var $up = $(this);
-    $.post($(this).attr('href'), function () {
-    }, 'json')
-    .done(function (data) {
+    $.post($(this).attr('href'), function (data) {
       if (data.code === 0) {
         $up.hide();
         var $point = $('#id-point-' + data.result.id);
         var point = parseInt($point.text());
         $point.text(point + 1);
+      } else if (data.code === 100) {
+        console.log('aa');
+        window.location.href = '/accounts/login/'
       }
+    }, 'json')
+    .done(function () {
     })
     .fail(function () {
     })

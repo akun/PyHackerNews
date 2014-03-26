@@ -36,7 +36,7 @@
             <li><a href="#">{% trans '最新' %}</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">{% if gravatar_url %}<img src="{{ gravatar_url }}" />{% endif %} {{ request.user.username }}</a></li>
+            <li><a href="{% url 'account:index' %}">{% if gravatar_url %}<img src="{{ gravatar_url }}" />{% endif %} {{ request.user.username }}</a></li>
             <li><a href="{% url 'social:begin' 'github' %}">{% trans 'GitHub' %}</a></li>
           </ul>
         </div>

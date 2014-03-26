@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'social.apps.django_app.default',
     'django_nose',
     'news',
+    'account',
 )
 
 MIDDLEWARE_CLASSES = (

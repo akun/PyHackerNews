@@ -67,3 +67,6 @@ body {
   padding: 0 10px 0;
   margin-bottom: 0;
 }
+.no-border {
+  border: 0;
+}
