@@ -72,8 +72,7 @@ def comment(request, post_id):
 def format_post(request, post):
     post.voted = False
     is_authenticated = request.user.is_authenticated()
-    has_vote = post.vote_set.filter(user=request.user).count()
-    if is_authenticated and has_vote:
+    if is_authenticated and post.vote_set.filter(user=request.user).count():
         post.voted = True
     if post.url:
         post.netloc = urlparse(post.url).netloc
