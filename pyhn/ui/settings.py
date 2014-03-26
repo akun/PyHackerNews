@@ -1,5 +1,5 @@
 """
-Django settings for pyhn project.
+Django settings for ui project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -20,9 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'jwzjro=o+*&al+d_wmv!v*!u5ryyyz5-av@b+a%ec!j9)0p28&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'ui', 'templates'),
+)
 
 ALLOWED_HOSTS = []
 
@@ -51,9 +54,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'pyhn.pyhn.urls'
+ROOT_URLCONF = 'pyhn.ui.urls'
 
-WSGI_APPLICATION = 'pyhn.wsgi.application'
+WSGI_APPLICATION = 'pyhn.ui.wsgi.application'
 
 
 # Database
@@ -84,6 +87,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'ui', 'static'),
+)
 
 
 LOGIN_REDIRECT_URL = '/'

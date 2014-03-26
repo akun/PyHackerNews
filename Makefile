@@ -24,4 +24,4 @@ clean:
 	find $(SRC_DIR) -name "*.pyc" | xargs rm
 
 run:
-	python $(SRC_DIR)/manage.py runserver 0.0.0.0:$(PORT) --settings=pyhn.settings_dev
+	python $(SRC_DIR)/manage.py runserver 0.0.0.0:$(PORT) --settings=pyhn.ui.settings_dev
