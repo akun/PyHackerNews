@@ -2,7 +2,7 @@
 
 
 from django.contrib import admin
-from news.models import Comment, Post, Vote
+from pyhn.news.models import Comment, Post, Vote
 
 
 admin.site.register(Comment)

@@ -4,7 +4,7 @@
 from django.conf.urls import patterns, url
 
 
-urlpatterns = patterns('',
-    url(r'^$', 'account.views.index', name='index'),
-    url(r'^login/$', 'account.views.login', name='login'),
+urlpatterns = patterns('pyhn.account.views',
+    url(r'^$', 'index', name='index'),
+    url(r'^login/$', 'login', name='login'),
 )

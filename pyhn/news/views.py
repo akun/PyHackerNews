@@ -12,8 +12,8 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.views.decorators.http import require_GET, require_POST, require_http_methods
 
-from news.forms import CommentForm
-from news.models import Comment, Post
+from pyhn.news.forms import CommentForm
+from pyhn.news.models import Comment, Post
 
 
 @require_GET

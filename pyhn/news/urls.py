@@ -4,9 +4,9 @@
 from django.conf.urls import patterns, url
 
 
-urlpatterns = patterns('',
-    url(r'^$', 'news.views.index', name='index'),
-    url(r'^(?P<cur_page_num>\d+)/$', 'news.views.index', name='list'),
-    url(r'^vote/(?P<post_id>\d+)$', 'news.views.vote', name='vote'),
-    url(r'^(?P<post_id>\d+)/comment/$', 'news.views.comment', name='comment'),
+urlpatterns = patterns('pyhn.news.views',
+    url(r'^$', 'index', name='index'),
+    url(r'^(?P<cur_page_num>\d+)/$', 'index', name='list'),
+    url(r'^vote/(?P<post_id>\d+)$', 'vote', name='vote'),
+    url(r'^(?P<post_id>\d+)/comment/$', 'comment', name='comment'),
 )

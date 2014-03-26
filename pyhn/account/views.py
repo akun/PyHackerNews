@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.views.decorators.http import require_GET
 
 
-from account.forms import AccountForm
+from pyhn.account.forms import AccountForm
 
 
 @login_required

@@ -3,7 +3,7 @@
 
 from django import forms
 
-from news.models import Post
+from pyhn.news.models import Post
 
 
 class CommentForm(forms.Form):
