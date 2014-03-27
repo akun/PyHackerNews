@@ -5,10 +5,10 @@ import os
 import sys
 
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from setuptools import setup, find_packages
+from pip.req import parse_requirements
+install_reqs = parse_requirements('requirements.txt')
+reqs = [str(ir.req) for ir in install_reqs]
 
 
 setup(
@@ -16,22 +16,11 @@ setup(
     version='0.0.1',
     description='Hacker News, write in Python',
     author='akun',
+    author_email='6awkun@gmail.com',
     url='https://github.com/akun/PyHackerNews',
-    packages=[
-        'pyhn',
-    ],
-    package_dir={'pyhn': 'pyhn'},
-    install_requires=[
-        'Django==1.6.2',
-        'python-social-auth==0.1.22',
-
-        'pylint-django==0.3'
-        'coverage==3.7.1',
-        'django-nose==1.2',
-
-        'Sphinx==1.2.2',
-        'rst2pdf==0.93',
-        'hieroglyph==0.6.5',
-    ],
+    license='Apache License',
+    package_dir={'pyhn': os.path.join('src', 'pyhn')},
+    packages=find_packages('src'),
+    install_requires=reqs,
     test_suite='nose.collector',
 )

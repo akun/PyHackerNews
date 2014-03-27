@@ -24,7 +24,7 @@ DEBUG = False
 
 TEMPLATE_DEBUG = False
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'pyhn', 'templates'),
+    os.path.join(BASE_DIR, 'templates'),
 )
 
 ALLOWED_HOSTS = []
@@ -88,7 +88,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'pyhn', 'static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 
 
