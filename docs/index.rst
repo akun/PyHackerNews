@@ -1,5 +1,5 @@
 Welcome to pyhn's documentation!
-===============================
+================================
 
 .. toctree::
    :maxdepth: 2
