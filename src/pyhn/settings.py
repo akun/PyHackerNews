@@ -1,5 +1,5 @@
 """
-Django settings for ui project.
+Django settings for pyhn project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -24,7 +24,7 @@ DEBUG = False
 
 TEMPLATE_DEBUG = False
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'ui', 'templates'),
+    os.path.join(BASE_DIR, 'pyhn', 'templates'),
 )
 
 ALLOWED_HOSTS = []
@@ -41,8 +41,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
     'django_nose',
-    'news',
-    'account',
+    'pyhn.news',
+    'pyhn.account',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -54,9 +54,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'pyhn.ui.urls'
+ROOT_URLCONF = 'pyhn.urls'
 
-WSGI_APPLICATION = 'pyhn.ui.wsgi.application'
+WSGI_APPLICATION = 'pyhn.wsgi.application'
 
 
 # Database
@@ -88,7 +88,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'ui', 'static'),
+    os.path.join(BASE_DIR, 'pyhn', 'static'),
 )
 
 

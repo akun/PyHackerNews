@@ -2,7 +2,7 @@
 
 
 """
-WSGI config for ui project.
+WSGI config for pyhn project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 
 
 import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ui.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pyhn.settings')
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
