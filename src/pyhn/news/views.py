@@ -8,7 +8,8 @@ import hashlib
 import urllib
 
 from django.core.paginator import EmptyPage, InvalidPage, Paginator
-from django.http import HttpResponse
+from django.core.urlresolvers import reverse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.views.decorators.http import require_GET, require_POST, require_http_methods
 
@@ -55,7 +56,9 @@ def vote(request, post_id):
 
 @require_http_methods(['GET', 'POST'])
 def comment(request, post_id):
+
     post = get_object_or_404(Post, id=post_id)
+
     if request.method == 'GET':
         format_post(request, post)
         form = CommentForm()
@@ -63,9 +66,14 @@ def comment(request, post_id):
         form = CommentForm(request.POST)
         if form.is_valid():
             form.save(request.user, post)
+            return HttpResponseRedirect(reverse('news:comment', kwargs={
+                'post_id': post_id
+            }))
 
     comments = Comment.objects.filter(parent=None)
+
     return render(request, 'news/comment.html', {
+        'form': form,
         'post': post,
         'show_index': False,
         'comments': comments,

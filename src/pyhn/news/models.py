@@ -11,7 +11,7 @@ class Post(models.Model):
     url = models.URLField(null=True, blank=True)
     content = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    score = models.FloatField()
+    score = models.FloatField(default=0.0)
 
     class Meta:
         ordering = ['-score', '-created_at']
@@ -52,7 +52,7 @@ class Comment(models.Model):
     post = models.ForeignKey('Post')
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    score = models.FloatField()
+    score = models.FloatField(default=0.0)
 
     class Meta:
         ordering = ['-score', '-created_at']

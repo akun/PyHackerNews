@@ -9,7 +9,10 @@
   <form method="post" action=".">{% csrf_token %}
     <div class="row">
       <div class="col-xs-12">
-        <textarea class="form-control" name="comment" rows="6" cols="60"></textarea>
+        <div class="form-group{% if form.content.errors %} has-error{% endif %}">
+          {{ form.content }}
+          <span class="help-block">{{ form.content.errors|striptags }}</span>
+        </div>
       </div>
     </div>
     <div class="row">
