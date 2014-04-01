@@ -20,6 +20,3 @@ Install
 
 License
 -------
-
-.. include:: LICENSE
-   :literal:
