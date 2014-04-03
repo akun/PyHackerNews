@@ -44,6 +44,6 @@ class CommentTestCase(TestCase):
         }))
         self.assertEqual(response.status_code, 200)
         self.assertFormError(
-            response, 'form', 'content',
+            response, 'comment_form', 'content',
             forms.CharField.default_error_messages['required']
         )

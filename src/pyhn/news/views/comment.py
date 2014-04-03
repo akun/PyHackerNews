@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 
 
-from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
-from django.views.decorators.http import require_http_methods
+import json
 
-from pyhn.news.forms import CommentForm
+from django.core.urlresolvers import reverse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
+from django.views.decorators.http import require_POST, require_http_methods
+
+from pyhn.news.forms import CommentForm, ReplyForm
 from pyhn.news.models import Comment, Post
 from pyhn.news.views.common import format_post
 
@@ -15,14 +17,15 @@ from pyhn.news.views.common import format_post
 def comment(request, post_id):
 
     post = get_object_or_404(Post, id=post_id)
+    reply_form = ReplyForm()
 
     if request.method == 'GET':
         format_post(request, post)
-        form = CommentForm()
+        comment_form = CommentForm()
     else:
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            form.save(request.user, post)
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment_form.save(request.user, post)
             return HttpResponseRedirect(reverse('news:comment', kwargs={
                 'post_id': post_id
             }))
@@ -30,8 +33,26 @@ def comment(request, post_id):
     comments = Comment.objects.filter(parent=None)
 
     return render(request, 'news/comment.html', {
-        'form': form,
+        'comment_form': comment_form,
+        'reply_form': reply_form,
         'post': post,
         'show_index': False,
         'comments': comments,
     })
+
+
+@require_POST
+def reply(request, comment_id):
+
+    comment = get_object_or_404(Comment, id=comment_id)
+    ret = {'code': 0, 'msg': 'success', 'result': {'id': comment.id}}
+
+    form = ReplyForm(request.POST)
+    if form.is_valid():
+        form.save(request.user, comment)
+    else:
+        ret['code'] = 100
+        ret['msg'] = 'form is invalid'
+        ret['result']['errors'] = dict(form.errors)
+
+    return HttpResponse(json.dumps(ret, ensure_ascii=False), content_type='application/json')

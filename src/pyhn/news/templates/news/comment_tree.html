@@ -3,15 +3,16 @@
 {% for comment in comments %}
 <ul class="tree">
   <li>
+    <h6><small>0 point by {{ comment.user.username }} {{ comment.created_at|timesince }} ago | <a href="#">link</a></small></h6>
+    <pre>{{ comment.content }}</pre>
+    <h6><a class="reply" data-action="{% url 'news:reply' comment.id %}" data-id="{{ comment.id }}" href="#reply">{% trans '回复' %}</a></h6>
+    <div id="id_comment_{{ comment.id }}"></div>
+
     {% if comment.comment_set.count %}
     {% with comments=comment.comment_set.all filename='news/comment_tree.html' %}
     {% include filename %}
     {% endwith %}
     {% endif %}
-
-    <h6><small>0 point by {{ comment.user.username }} {{ comment.created_at|timesince }} ago | <a href="#">link</a></small></h6>
-    <pre>{{ comment.content }}</pre>
-    <h6><a href="#reply">{% trans '回复' %}</a></h6>
   </li>
 </ul>
 {% endfor %}

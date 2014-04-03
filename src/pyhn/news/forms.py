@@ -18,3 +18,14 @@ class CommentForm(forms.Form):
         comment.post = post
         comment.content = self.cleaned_data['content']
         comment.save()
+
+
+class ReplyForm(CommentForm):
+
+    def save(self, user, parent_comment):
+        comment = Comment()
+        comment.user = user
+        comment.parent = parent_comment
+        comment.post = parent_comment.post
+        comment.content = self.cleaned_data['content']
+        comment.save()

@@ -6,21 +6,15 @@
 {% include "news/item.html" %}
 
 <div class="row comment">
-  <form method="post" action=".">{% csrf_token %}
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="form-group{% if form.content.errors %} has-error{% endif %}">
-          {{ form.content }}
-          <span class="help-block">{{ form.content.errors|striptags }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-    </div>
-  </form>
+  {% with form=comment_form action='.' %}
+  {% include "news/comment_form.html" %}
+  {% endwith %}
+</div>
+
+<div class="hide">
+  {% with form=reply_form id="id_reply_form" %}
+  {% include "news/comment_form.html" %}
+  {% endwith %}
 </div>
 
 <div class="row comments">
