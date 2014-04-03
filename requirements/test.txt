@@ -1,5 +1,6 @@
 -r common.txt
 
 pylint-django==0.3
-coverage==3.7.1
+python-coveralls==2.4.2
+coveralls==0.4.1
 django-nose==1.2

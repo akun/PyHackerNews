@@ -16,7 +16,7 @@ lintall:
 	pylint --rcfile=.pylintrc --load-plugins pylint_django $(SRC_DIR)/$(PROJECT_DIR)
 
 test:
-	cd $(SRC_DIR) && python manage.py test --failfast --nocapture --with-coverage --cover-package=$(PROJECT_DIR) --settings=pyhn.settings.test
+	python $(SRC_DIR)/manage.py test --failfast --nocapture --with-coverage --cover-package=$(PROJECT_DIR) --settings=pyhn.settings.test
 
 html:
 	cd $(DOC_DIR) && $(MAKE) html
