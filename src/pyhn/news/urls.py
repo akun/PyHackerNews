@@ -8,6 +8,9 @@ urlpatterns = patterns('pyhn.news.views.index',
     url(r'^$', 'index', name='index'),
     url(r'^(?P<cur_page_num>\d+)/$', 'index', name='list'),
 )
+urlpatterns += patterns('pyhn.news.views.post',
+    url(r'^submit/$', 'submit', name='submit'),
+)
 urlpatterns += patterns('pyhn.news.views.vote',
     url(r'^post/(?P<post_id>\d+)/vote/$', 'vote', name='vote'),
 )
