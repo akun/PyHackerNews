@@ -18,7 +18,7 @@ setup(
     author='akun',
     author_email='6awkun@gmail.com',
     url='https://github.com/akun/PyHackerNews',
-    license='Apache License',
+    license='MIT License',
     package_dir={'pyhn': os.path.join('src', 'pyhn')},
     packages=find_packages('src'),
     install_requires=reqs,
