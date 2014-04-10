@@ -7,7 +7,10 @@ from django.test.client import Client
 
 class AnonymousTestCase(TestCase):
 
-    fixtures = ['user.json', 'post.json', 'comment.json']
+    fixtures = ['user.json', 'post.json', 'comment.json', 'vote.json']
+
+    POST_ID = 9527
+    COMMENT_ID = 1
 
 
 class AuthorizedTestCase(AnonymousTestCase):
