@@ -16,6 +16,8 @@ $(document).ready(function () {
     }
   });
 
+  var loginUrl = '/accounts/login/';
+
   $('.up').click(function () {
     var $up = $(this);
     $.post($(this).attr('href'), function (data) {
@@ -25,7 +27,7 @@ $(document).ready(function () {
         var point = parseInt($point.text());
         $point.text(point + 1);
       } else if (data.code === 100) {
-        window.location.href = '/accounts/login/'
+        window.location.href = loginUrl;
       }
     }, 'json')
     .done(function () {
@@ -47,15 +49,17 @@ $(document).ready(function () {
     $form.find('button').click(function () {
       var content = $form.find('#id_content').val();
       $.post(action, {'content': content}, function (data) {
-        var $formGroup = $form.find('.form-group')
-        var $helpBlock = $form.find('.help-block')
+        var $formGroup = $form.find('.form-group');
+        var $helpBlock = $form.find('.help-block');
         if (data.code === 0) {
           $formGroup.removeClass('has-error');
           $helpBlock.text('');
           window.location.reload();
-        } else if (data.code === 100) {
+        } else if (data.code === 101) {
           $formGroup.addClass('has-error');
           $helpBlock.text(data.result.errors.content);
+        } else if (data.code === 100) {
+          window.location.href = loginUrl;
         }
       }, 'json')
       .done(function () {

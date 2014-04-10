@@ -3,6 +3,7 @@
 
 import json
 
+from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
@@ -13,6 +14,7 @@ from pyhn.news.models import Comment, Post
 from pyhn.news.views.common import format_post
 
 
+@login_required
 @require_http_methods(['GET', 'POST'])
 def comment(request, post_id):
 
@@ -46,13 +48,16 @@ def reply(request, comment_id):
 
     comment = get_object_or_404(Comment, id=comment_id)
     ret = {'code': 0, 'msg': 'success', 'result': {'id': comment.id}}
-
-    form = ReplyForm(request.POST)
-    if form.is_valid():
-        form.save(request.user, comment)
+    if request.user.is_authenticated():
+        form = ReplyForm(request.POST)
+        if form.is_valid():
+            form.save(request.user, comment)
+        else:
+            ret['code'] = 101
+            ret['msg'] = 'form is invalid'
+            ret['result']['errors'] = dict(form.errors)
     else:
         ret['code'] = 100
-        ret['msg'] = 'form is invalid'
-        ret['result']['errors'] = dict(form.errors)
+        ret['msg'] = 'need login'
 
     return HttpResponse(json.dumps(ret, ensure_ascii=False), content_type='application/json')
