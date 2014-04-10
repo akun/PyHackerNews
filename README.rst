@@ -9,8 +9,8 @@ PyHackerNews
    :target: https://landscape.io/github/akun/PyHackerNews/master
    :alt: Code Health
 
-.. image:: https://coveralls.io/repos/akun/PyHackerNews/badge.png
-   :target: https://coveralls.io/r/akun/PyHackerNews
+.. image:: https://coveralls.io/repos/akun/PyHackerNews/badge.png?branch=master
+   :target: https://coveralls.io/r/akun/PyHackerNews?branch=master
    :alt: Coverage Status
 
 Hacker News written in Python
