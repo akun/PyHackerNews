@@ -5,9 +5,12 @@ from django.test import TestCase
 from django.test.client import Client
 
 
-class AuthorizedTestCase(TestCase):
+class AnonymousTestCase(TestCase):
 
     fixtures = ['user.json', 'post.json', 'comment.json']
+
+
+class AuthorizedTestCase(AnonymousTestCase):
 
     def setUp(self):
         self.client = Client(enforce_csrf_checks=False)
@@ -15,8 +18,3 @@ class AuthorizedTestCase(TestCase):
 
     def tearDown(self):
         self.client.logout()
-
-
-class AnonymousTestCase(TestCase):
-
-    fixtures = ['user.json', 'post.json', 'comment.json']
