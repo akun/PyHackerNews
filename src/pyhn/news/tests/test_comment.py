@@ -17,6 +17,16 @@ class CommentTestCase(AuthorizedTestCase):
             'post_id': self.POST_ID,
         }))
         self.assertEqual(response.status_code, 200)
+        self.assertNotEqual(0, response.context['comments'].count())
+
+    def test_comment_get_200_no_comments(self):
+        Comment.objects.all().delete()
+
+        response = self.client.get(reverse('news:comment', kwargs={
+            'post_id': self.POST_ID,
+        }))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(0, response.context['comments'].count())
 
     def test_comment_post_success(self):
         content = 'xxxx'

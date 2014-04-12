@@ -32,7 +32,7 @@ def comment(request, post_id):
                 'post_id': post_id
             }))
 
-    comments = Comment.objects.filter(parent=None)
+    comments = Comment.objects.filter(post=post, parent=None)
 
     return render(request, 'news/comment.html', {
         'comment_form': comment_form,
