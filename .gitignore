@@ -1,5 +1,6 @@
 *.py[cod]
 *.swp
+*.sqlite3
 docs/_build
 
 # C extensions
