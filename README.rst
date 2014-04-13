@@ -24,7 +24,7 @@ Features
 * [o] show news list
 
   + [o] show news list, order by score, with paginator
-  + [ ] show news list, order by post time
+  + [o] show news list, order by post time
   + [o] show news info: title, domain, point, reporter, since when, comment count
   + [o] vote for news. **login required**
   + [ ] remove news you post. **login required**
