@@ -2,10 +2,11 @@
 
 
 from django.core.urlresolvers import reverse
-from django.test import TestCase
+
+from pyhn.news.tests.base import AnonymousTestCase
 
 
-class ListTestCase(TestCase):
+class AnonymousListTestCase(AnonymousTestCase):
 
     def test_list_default(self):
         response = self.client.get(reverse('news:index'))
