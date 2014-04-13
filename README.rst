@@ -39,7 +39,7 @@ Features
 * [o] comment
 
   + [o] show comment list order by score, with indent
-  + [ ] show comment info: comment words, point, who comment, since when
+  + [o] show comment info: comment words, point, who comment, since when
   + [ ] copy comment link
   + [o] add comment abount news. **login required**
   + [o] reply the comment. **login required**
