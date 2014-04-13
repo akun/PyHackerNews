@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load i18n %}
+{% load pyhn_extras %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +37,9 @@
             <li><a href="{% url 'news:submit' %}">{% trans 'Submit' %}</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'account:index' %}">{% if gravatar_url %}<img src="{{ gravatar_url }}" />{% endif %} {{ request.user.username }}</a></li>
+            {% if request.user.is_authenticated %}
+            <li><a href="{% url 'account:index' %}"><img src="{{ request.user.email|gravatar_url }}" /> {{ request.user.username }}</a></li>
+            {% endif %}
             <li><a href="{% url 'social:begin' 'github' %}">{% trans 'GitHub' %}</a></li>
           </ul>
         </div>

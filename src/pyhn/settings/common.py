@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
     'django_nose',
+    'pyhn',
     'pyhn.news',
     'pyhn.account',
 )

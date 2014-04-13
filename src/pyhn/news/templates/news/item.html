@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load pyhn_extras %}
 
 <div class="row news">
   <div class="col-md-12">
@@ -19,7 +20,7 @@
     <h6 class="sub">
       <small>
         <span id="id-point-{{ post.id }}">{{ post.vote_set.count }}</span> point |
-        {% trans '投递：' %}<a href="#author"><img src="{{ post.gravatar_url }}" /> {{ post.user.username }}</a> |
+        {% trans '投递：' %}<a href="#author"><img src="{{ post.user.email|gravatar_url }}" /> {{ post.user.username }}</a> |
         {% trans '时间：' %}{{ post.created_at|timesince }} ago |
         {% trans '评论：' %}<a href="{% url 'news:comment' post.id %}"><span class="glyphicon glyphicon-comment"></span> {{ post.comment_set.count }}</a>
       </small>
