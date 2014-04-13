@@ -2,6 +2,7 @@ SRC_DIR = src
 DOC_DIR = docs
 PROJECT_DIR = pyhn
 MAKE = make
+export SECRET_KEY='dev'
 
 all:
 	make lint
