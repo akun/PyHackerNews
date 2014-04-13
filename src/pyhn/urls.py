@@ -7,7 +7,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     url(r'', include('social.apps.django_app.urls', namespace='social')),
     url(r'^$', 'pyhn.news.views.index.index', name='index'),
     url(r'^news/', include('pyhn.news.urls', namespace='news')),

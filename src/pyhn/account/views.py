@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views.decorators.http import require_GET
 
-
 from pyhn.account.forms import AccountForm
 
 
@@ -14,6 +13,7 @@ def index(request):
 
     form = AccountForm()
     return render(request, 'account/index.html', {'form': form})
+
 
 @require_GET
 def login(request):

@@ -56,3 +56,6 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ['-score', '-created_at']
+
+    def __unicode__(self):
+        return '%s, %s' % (self.user, self.post)

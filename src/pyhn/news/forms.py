@@ -8,17 +8,19 @@ from pyhn.news.models import Comment, Post
 
 
 class PostForm(forms.Form):
-    title = forms.CharField(label=_('Title'), max_length=200,
+    title = forms.CharField(
+        label=_('Title'), max_length=200,
         widget=forms.TextInput(attrs={'class': 'form-control'})
     )
-    url = forms.URLField(label=_('URL'), required=False,
+    url = forms.URLField(
+        label=_('URL'), required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'})
     )
-    content = forms.CharField(label=_('Content'), required=False,
-        widget=forms.Textarea(attrs={
-            'class': 'form-control', 'rows': 6, 'cols': 60,
-        }
-    ))
+    content = forms.CharField(
+        label=_('Content'), required=False, widget=forms.Textarea(
+            attrs={'class': 'form-control', 'rows': 6, 'cols': 60}
+        )
+    )
 
     def save(self, user):
         post = Post()
@@ -31,9 +33,11 @@ class PostForm(forms.Form):
 
 class CommentForm(forms.Form):
 
-    content = forms.CharField(widget=forms.Textarea(attrs={
-        'class': 'form-control', 'rows': 6, 'cols': 60,
-    }))
+    content = forms.CharField(
+        widget=forms.Textarea(
+            attrs={'class': 'form-control', 'rows': 6, 'cols': 60}
+        )
+    )
 
     def save(self, user, post):
         comment = Comment()

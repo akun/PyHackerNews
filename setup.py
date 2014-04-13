@@ -2,13 +2,15 @@
 
 
 import os
-import sys
 
 
 from setuptools import setup, find_packages
 from pip.req import parse_requirements
-install_reqs = parse_requirements('requirements.txt')
-reqs = [str(ir.req) for ir in install_reqs]
+
+
+def get_reqs():
+    install_reqs = parse_requirements('requirements.txt')
+    reqs = [str(ir.req) for ir in install_reqs]
 
 
 setup(
@@ -21,6 +23,6 @@ setup(
     license='MIT License',
     package_dir={'pyhn': os.path.join('src', 'pyhn')},
     packages=find_packages('src'),
-    install_requires=reqs,
+    install_requires=get_reqs(),
     test_suite='nose.collector',
 )

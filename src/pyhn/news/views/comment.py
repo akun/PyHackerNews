@@ -16,7 +16,7 @@ from pyhn.news.views.common import format_post
 
 @login_required
 @require_http_methods(['GET', 'POST'])
-def comment(request, post_id):
+def comment_post(request, post_id):
 
     post = get_object_or_404(Post, id=post_id)
     reply_form = ReplyForm()
@@ -44,7 +44,7 @@ def comment(request, post_id):
 
 
 @require_POST
-def reply(request, comment_id):
+def reply_comment(request, comment_id):
 
     comment = get_object_or_404(Comment, id=comment_id)
     ret = {'code': 0, 'msg': 'success', 'result': {'id': comment.id}}
