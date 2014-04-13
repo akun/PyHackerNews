@@ -26,12 +26,12 @@ class Post(models.Model):
 
         Vote.objects.create(user=user, post=self)
 
-        p = self.vote_set.count()
-        p = p - 1 if p > 0 else 0
+        param_count = self.vote_set.count()
+        param_count = param_count - 1 if param_count > 0 else 0
         timedelta = (timezone.now() - self.created_at)
-        t = timedelta.days * 24 + timedelta.seconds / 3600
-        g = 1.8
-        score = p / (t + 2)**g
+        param_time = timedelta.days * 24 + timedelta.seconds / 3600
+        param_base = 1.8
+        score = param_count / (param_time + 2)**param_base
         self.score = score
         self.save()
 

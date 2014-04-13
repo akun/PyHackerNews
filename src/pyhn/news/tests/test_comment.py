@@ -69,7 +69,9 @@ class AuthorizedReplyTestCase(AuthorizedTestCase):
         self.assertEqual(response.status_code, 200)
         ret = json.loads(response.content)
         self.assertEqual(0, ret['code'])
-        comment = Comment.objects.get(parent__id=self.COMMENT_ID, content=content)
+        comment = Comment.objects.get(
+            parent__id=self.COMMENT_ID, content=content
+        )
         self.assertEqual(content, comment.content)
 
     def test_reply_post_failed(self):
