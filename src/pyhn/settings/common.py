@@ -109,3 +109,9 @@ SOCIAL_AUTH_GITHUB_SECRET = ''
 
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+# import local config, like database config, secret key, etc.
+try:
+    from pyhn.settings.local import *  # pylint: disable=W0401,W0614,F0401,E0611
+except ImportError:
+    pass

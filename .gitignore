@@ -2,6 +2,7 @@
 *.swp
 *.sqlite3
 docs/_build
+local.py
 
 # C extensions
 *.so
