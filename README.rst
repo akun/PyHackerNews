@@ -40,7 +40,7 @@ Features
 
   + [o] show comment list order by score, with indent
   + [o] show comment info: comment words, point, who comment, since when
-  + [ ] copy comment link
+  + [o] copy comment link, in browser address input
   + [o] add comment abount news. **login required**
   + [o] reply the comment. **login required**
   + [ ] vote for comment. **login required**
