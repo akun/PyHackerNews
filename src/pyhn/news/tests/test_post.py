@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
 
+import json
+
 from django import forms
 from django.core.urlresolvers import reverse
 
@@ -31,3 +33,12 @@ class PostTestCase(AuthorizedTestCase):
             response, 'form', 'title',
             forms.CharField.default_error_messages['required']
         )
+
+    def test_remove_post(self):
+        for post in Post.objects.all():
+            response = self.client.post(reverse('news:remove', kwargs={
+                'post_id': post.id
+            }))
+            self.assertEqual(response.status_code, 200)
+            ret = json.loads(response.content)
+            self.assertEqual(0, ret['code'])

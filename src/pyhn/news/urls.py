@@ -16,6 +16,7 @@ urlpatterns = patterns(
 urlpatterns += patterns(
     'pyhn.news.views.post',
     url(r'^submit/$', 'submit', name='submit'),
+    url(r'^remove/(?P<post_id>\d+)/$', 'remove', name='remove'),
 )
 urlpatterns += patterns(
     'pyhn.news.views.vote',

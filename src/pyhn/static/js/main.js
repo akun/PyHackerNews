@@ -72,4 +72,29 @@ $(document).ready(function () {
     });
   });
 
+  $('.remove').click(function () {
+    var $remove = $(this);
+    $remove.scojs_confirm({
+      action: function() {
+        $.post($remove.attr('href'), function (data) {
+          if (data.code === 0) {
+            $.scojs_message('remove success', $.scojs_message.TYPE_OK);
+            window.location.reload();
+          } else {
+            $.scojs_message('remove failed', $.scojs_message.TYPE_ERROR);
+          }
+        }, 'json')
+        .done(function () {
+        })
+        .fail(function () {
+            $.scojs_message('remove failed', $.scojs_message.TYPE_ERROR);
+        })
+        .always(function () {
+        });
+        this.close();
+      }
+    });
+    return false;
+  });
+
 });
