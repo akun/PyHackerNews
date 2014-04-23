@@ -47,6 +47,15 @@ class CommentTestCase(AuthorizedTestCase):
             forms.CharField.default_error_messages['required']
         )
 
+    def test_remove(self):
+        for comment in Comment.objects.all():
+            response = self.client.post(reverse('news:comment_remove', kwargs={
+                'comment_id': comment.id
+            }))
+            self.assertEqual(response.status_code, 200)
+            ret = json.loads(response.content)
+            self.assertEqual(0, ret['code'])
+
 
 class AnonymousReplyTestCase(AnonymousTestCase):
 

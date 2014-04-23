@@ -44,7 +44,7 @@ Features
   + [o] add comment abount news. **login required**
   + [o] reply the comment. **login required**
   + [o] vote for comment. **login required**
-  + [ ] remove the comment you add or reply. **login required**
+  + [o] remove the comment you add or reply. **login required**
 
 * [o] Auth/Account
 

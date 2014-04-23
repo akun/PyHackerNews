@@ -24,7 +24,7 @@
         {% trans '时间：' %}{{ post.created_at|timesince }} ago |
         {% trans '评论：' %}<a href="{% url 'news:comment' post.id %}"><span class="glyphicon glyphicon-comment"></span> {{ post.comment_set.count }}</a>
         {% if request.user == post.user %}
-        | <a class="remove" href="{% url 'news:remove' post.id %}"><span class="glyphicon glyphicon-trash"></span> remove</a>
+        | <a class="remove" href="{% url 'news:post_remove' post.id %}"><span class="glyphicon glyphicon-trash"></span> remove</a>
         {% endif %}
       </small>
     </h6>

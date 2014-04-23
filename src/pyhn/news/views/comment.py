@@ -61,3 +61,12 @@ def reply_comment(request, comment_id):
         ret['msg'] = 'need login'
 
     return HttpResponse(json.dumps(ret, ensure_ascii=False), content_type='application/json')
+
+
+@login_required
+@require_POST
+def remove(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    comment.delete()
+    ret = {'code': 0, 'msg': 'success', 'result': {'id': comment_id}}
+    return HttpResponse(json.dumps(ret, ensure_ascii=False), content_type='application/json')

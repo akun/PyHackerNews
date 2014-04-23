@@ -12,6 +12,9 @@
           {% endif %}
         </span>
         <span id="id-point-{{ comment.id }}">{{ comment.commentvote_set.count }}</span> point by {{ comment.user.username }} {{ comment.created_at|timesince }} ago | <a href="#{{ comment.id }}">link</a>
+        {% if request.user == comment.user %}
+        | <a class="remove" href="{% url 'news:comment_remove' comment.id %}"><span class="glyphicon glyphicon-trash"></span> remove</a>
+        {% endif %}
       </small>
     </h6>
     <pre>{{ comment.content }}</pre>

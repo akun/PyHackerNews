@@ -36,7 +36,7 @@ class PostTestCase(AuthorizedTestCase):
 
     def test_remove_post(self):
         for post in Post.objects.all():
-            response = self.client.post(reverse('news:remove', kwargs={
+            response = self.client.post(reverse('news:post_remove', kwargs={
                 'post_id': post.id
             }))
             self.assertEqual(response.status_code, 200)
