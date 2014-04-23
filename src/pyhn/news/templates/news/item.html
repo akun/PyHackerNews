@@ -7,7 +7,7 @@
       <small>{% if show_index %}{{ start_index|add:forloop.counter }}.{% endif %}</small>
       <span class="vote">
         {% if not post.voted %}
-        <a class="up" href="{% url 'news:vote' post.id %}"><span class="glyphicon glyphicon-thumbs-up btn-sm"></span></a>
+        <a class="up" href="{% url 'news:post_vote' post.id %}"><span class="glyphicon glyphicon-thumbs-up btn-sm"></span></a>
         {% endif %}
       </span>
       {% if post.url %}

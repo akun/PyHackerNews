@@ -43,7 +43,7 @@ Features
   + [o] copy comment link, in browser address input
   + [o] add comment abount news. **login required**
   + [o] reply the comment. **login required**
-  + [ ] vote for comment. **login required**
+  + [o] vote for comment. **login required**
   + [ ] remove the comment you add or reply. **login required**
 
 * [o] Auth/Account

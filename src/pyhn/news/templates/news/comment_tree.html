@@ -1,9 +1,19 @@
 {% load i18n%}
+{% load news_extras %}
 
 {% for comment in comments %}
 <ul class="tree">
   <li>
-    <h6 id="{{ comment.id }}"><small>0 point by {{ comment.user.username }} {{ comment.created_at|timesince }} ago | <a href="#{{ comment.id }}">link</a></small></h6>
+    <h6 id="{{ comment.id }}">
+      <small>
+        <span class="vote">
+          {% if not comment|comment_voted:request.user %}
+          <a class="up" href="{% url 'news:comment_vote' comment.id %}"><span class="glyphicon glyphicon-thumbs-up btn-sm"></span></a>
+          {% endif %}
+        </span>
+        <span id="id-point-{{ comment.id }}">{{ comment.commentvote_set.count }}</span> point by {{ comment.user.username }} {{ comment.created_at|timesince }} ago | <a href="#{{ comment.id }}">link</a>
+      </small>
+    </h6>
     <pre>{{ comment.content }}</pre>
     <h6><a class="reply" data-action="{% url 'news:reply' comment.id %}" data-id="{{ comment.id }}" href="#reply">{% trans '回复' %}</a></h6>
     <div id="id_comment_{{ comment.id }}"></div>

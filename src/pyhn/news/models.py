@@ -26,12 +26,7 @@ class Post(models.Model):
 
         Vote.objects.create(user=user, post=self)
 
-        param_count = self.vote_set.count()
-        param_count = param_count - 1 if param_count > 0 else 0
-        timedelta = (timezone.now() - self.created_at)
-        param_time = timedelta.days * 24 + timedelta.seconds / 3600
-        param_base = 1.8
-        score = param_count / (param_time + 2)**param_base
+        score = get_score(self.vote_set.count(), self.created_at)
         self.score = score
         self.save()
 
@@ -59,3 +54,29 @@ class Comment(models.Model):
 
     def __unicode__(self):
         return '%s, %s' % (self.user, self.post)
+
+    def vote(self, user):
+        CommentVote.objects.create(user=user, comment=self)
+
+        score = get_score(self.commentvote_set.count(), self.created_at)
+        self.score = score
+        self.save()
+
+        return score
+
+
+class CommentVote(models.Model):
+    user = models.ForeignKey('auth.User')
+    comment = models.ForeignKey('Comment')
+
+    def __unicode__(self):
+        return '%s, %s' % (self.user.username, self.comment.content[:10])
+
+
+def get_score(param_count, created_at):
+    param_count = param_count - 1 if param_count > 0 else 0
+    timedelta = (timezone.now() - created_at)
+    param_time = timedelta.days * 24 + timedelta.seconds / 3600
+    param_base = 1.8
+    score = param_count / (param_time + 2)**param_base
+    return score

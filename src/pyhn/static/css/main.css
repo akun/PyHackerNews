@@ -24,10 +24,10 @@ body {
 .news .title a:visited {
   color: #999;
 }
-.news .title .btn-sm {
+.news .title .btn-sm, .comments .btn-sm {
   padding: 0;
 }
-.news .title .vote {
+.news .title .vote, .comments .vote {
   display: inline-block;
   width: 12px;
 }

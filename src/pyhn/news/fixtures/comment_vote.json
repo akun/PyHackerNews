@@ -1,0 +1,10 @@
+[
+{
+    "pk": 1, 
+    "model": "news.commentvote", 
+    "fields": {
+        "comment": 1, 
+        "user": 1
+    }
+}
+]

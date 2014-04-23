@@ -20,7 +20,11 @@ urlpatterns += patterns(
 )
 urlpatterns += patterns(
     'pyhn.news.views.vote',
-    url(r'^post/(?P<post_id>\d+)/vote/$', 'vote', name='vote'),
+    url(r'^post/(?P<post_id>\d+)/vote/$', 'post_vote', name='post_vote'),
+    url(
+        r'^comment/(?P<comment_id>\d+)/vote/$', 'comment_vote',
+        name='comment_vote'
+    ),
 )
 urlpatterns += patterns(
     'pyhn.news.views.comment',
