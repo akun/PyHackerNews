@@ -56,7 +56,7 @@ Features
 * [o] Hacker News Score System(auto)
 
   + [o] news score
-  + [ ] comment score
+  + [o] comment score
   + [ ] user score
   + [ ] calculate score in background
 
