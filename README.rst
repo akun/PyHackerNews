@@ -50,7 +50,7 @@ Features
 
   + [o] login with social site's oauth
   + [o] show social site's oauth list
-  + [ ] edit personal account info: nickname for show(empty will show social site's username), email(for gravatar). **login required**
+  + [o] edit personal account info: username, email(for gravatar). **login required**
   + [ ] show someone account info: username for show, score, about
 
 * [o] Hacker News Score System(auto)
