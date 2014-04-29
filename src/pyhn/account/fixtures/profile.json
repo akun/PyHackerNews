@@ -1,0 +1,18 @@
+[
+{
+    "pk": 1, 
+    "model": "account.profile", 
+    "fields": {
+        "user_permissions": [], 
+        "about": "profile 1", 
+        "groups": []
+    },
+    "pk": 2, 
+    "model": "account.profile", 
+    "fields": {
+        "user_permissions": [], 
+        "about": "profile 2", 
+        "groups": []
+    }
+}
+]

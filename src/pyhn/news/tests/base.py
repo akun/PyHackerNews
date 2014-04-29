@@ -9,6 +9,7 @@ class AnonymousTestCase(TestCase):
 
     fixtures = [
         'user.json',
+        'profile.json',
         'post.json',
         'vote.json',
         'comment.json',

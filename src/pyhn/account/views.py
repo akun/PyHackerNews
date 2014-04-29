@@ -4,7 +4,7 @@
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.views.decorators.http import require_GET
 
 from pyhn.account.forms import AccountForm
@@ -37,3 +37,9 @@ def index(request):
 def login(request):
 
     return render(request, 'account/login.html', {})
+
+
+@require_GET
+def user_profile(request, user_id):
+    profile = get_object_or_404(Profile, id=user_id)
+    return render(request, 'account/profile.html', {'profile': profile})

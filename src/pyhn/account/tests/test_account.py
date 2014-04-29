@@ -5,6 +5,7 @@ from django import forms
 from django.core.urlresolvers import reverse
 from django.core.validators import EmailValidator
 
+from pyhn.account.models import Profile
 from pyhn.news.tests.base import AnonymousTestCase, AuthorizedTestCase
 
 
@@ -13,6 +14,14 @@ class AnonymousAccountTestCase(AnonymousTestCase):
     def test_login(self):
         response = self.client.get(reverse('account:login'))
         self.assertEqual(response.status_code, 200)
+
+    def test_user_profile(self):
+        for profile in Profile.objects.all():
+            response = self.client.get(reverse('profile', kwargs={
+                'user_id': profile.id
+            }))
+            self.assertEqual(response.status_code, 200)
+
 
 class AuthorizedAccountTestCase(AuthorizedTestCase):
 

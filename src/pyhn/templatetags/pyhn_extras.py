@@ -9,8 +9,7 @@ register = template.Library()
 
 
 @register.filter
-def gravatar_url(email):
-    size = 16
+def gravatar_url(email, size=16):
     default = 'http://www.gravatar.com/avatar/00000000000000000000000000000000?s=%d' % size
 
     return 'http://s.gravatar.com/avatar/%s?%s' % (

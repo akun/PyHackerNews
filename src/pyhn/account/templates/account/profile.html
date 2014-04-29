@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load pyhn_extras %}
+
+{% block container %}
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{% trans '用户资料' %}</h3>
+  </div>
+  <div class="panel-body">
+    <div class="media">
+      <a class="pull-left" href="#"><img class="media-object" src="{{ profile.email|gravatar_url:48 }}" alt="user_icon"></a>
+      <div class="media-body">
+        <div class="row">
+          <div class="col-md-2">{% trans 'Username' %}</div>
+          <div class="col-md-8">{{ profile.username }}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">{% trans 'About' %}</div>
+          <div class="col-md-8"><pre>{{ profile.about }}</pre></div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">{% trans 'Score' %}</div>
+          <div class="col-md-8">0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
