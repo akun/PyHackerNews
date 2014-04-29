@@ -20,7 +20,7 @@ lintpart:
 	pylint --rcfile=.pylintrc --load-plugins pylint_django -d C0111,R0901,R0904,I0011 $(SRC_DIR)/$(PROJECT_DIR)
 
 test:
-	python $(SRC_DIR)/manage.py test --failfast --nocapture --with-coverage --cover-package=$(PROJECT_DIR) --settings=pyhn.settings.test
+	python $(SRC_DIR)/manage.py test --failfast --nocapture --with-coverage --cover-package=$(PROJECT_DIR) --cover-erase --settings=pyhn.settings.test
 
 html:
 	cd $(DOC_DIR) && $(MAKE) html
