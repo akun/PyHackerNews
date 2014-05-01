@@ -57,7 +57,7 @@ Features
 
   + [o] news score
   + [o] comment score
-  + [ ] user score
+  + [o] user score
   + [ ] calculate score in background
 
 License
