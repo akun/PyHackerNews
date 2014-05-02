@@ -6,5 +6,61 @@
         "comment": 1, 
         "user": 1
     }
+},
+{
+    "pk": 2, 
+    "model": "news.commentvote", 
+    "fields": {
+        "comment": 2, 
+        "user": 1
+    }
+},
+{
+    "pk": 3, 
+    "model": "news.commentvote", 
+    "fields": {
+        "comment": 3, 
+        "user": 1
+    }
+},
+{
+    "pk": 4, 
+    "model": "news.commentvote", 
+    "fields": {
+        "comment": 4, 
+        "user": 1
+    }
+},
+{
+    "pk": 5, 
+    "model": "news.commentvote", 
+    "fields": {
+        "comment": 1, 
+        "user": 2
+    }
+},
+{
+    "pk": 6, 
+    "model": "news.commentvote", 
+    "fields": {
+        "comment": 2, 
+        "user": 2
+    }
+},
+{
+    "pk": 7, 
+    "model": "news.commentvote", 
+    "fields": {
+        "comment": 3, 
+        "user": 2
+    }
+},
+{
+    "pk": 8, 
+    "model": "news.commentvote", 
+    "fields": {
+        "comment": 4, 
+        "user": 2
+    }
 }
 ]

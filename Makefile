@@ -34,3 +34,6 @@ clean:
 
 run:
 	cd $(SRC_DIR) && python manage.py runserver 0.0.0.0:$(PORT) --settings=pyhn.settings.dev
+
+score:
+	python $(SRC_DIR)/manage.py score --settings=pyhn.settings.prod
