@@ -39,9 +39,16 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if request.user.is_authenticated %}
-            <li><a href="{% url 'account:index' %}"><img src="{{ request.user.email|gravatar_url }}" /> {{ request.user.username }}</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ request.user.email|gravatar_url }}" /> {{ request.user.username }} <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'account:index' %}">Account</a></li>
+                <li><a href="{% url 'account:logout' %}">Sign Out</a></li>
+              </ul>
+            </li>
+            {% else %}
+            <li><a href="{% url 'social:begin' 'github' %}">{% trans 'Sign in with GitHub' %}</a></li>
             {% endif %}
-            <li><a href="{% url 'social:begin' 'github' %}">{% trans 'GitHub' %}</a></li>
           </ul>
         </div>
       </div>
