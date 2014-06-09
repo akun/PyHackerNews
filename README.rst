@@ -62,3 +62,5 @@ Features
 
 License
 -------
+
+MIT
