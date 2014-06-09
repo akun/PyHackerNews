@@ -3,9 +3,6 @@
 
 from django.conf.urls import patterns, include, url
 
-from django.contrib import admin
-admin.autodiscover()
-
 
 urlpatterns = patterns(
     '',
@@ -17,5 +14,4 @@ urlpatterns = patterns(
         r'^user/(?P<user_id>\d+)/', 'pyhn.account.views.user_profile',
         name='profile'
     ),
-    url(r'^admin/', include(admin.site.urls)),
 )
