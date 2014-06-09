@@ -3,6 +3,8 @@
 *.sqlite3
 docs/_build
 local.py
+local
+man
 
 # C extensions
 *.so
