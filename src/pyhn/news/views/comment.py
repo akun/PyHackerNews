@@ -4,6 +4,7 @@
 import json
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import redirect_to_login
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
@@ -14,7 +15,6 @@ from pyhn.news.models import Comment, Post
 from pyhn.news.views.common import format_post
 
 
-@login_required
 @require_http_methods(['GET', 'POST'])
 def comment_post(request, post_id):
 
@@ -25,6 +25,10 @@ def comment_post(request, post_id):
         format_post(request, post)
         comment_form = CommentForm()
     else:
+        if not request.user.is_authenticated():
+            path = request.get_full_path()
+            return redirect_to_login(path)
+
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
             comment_form.save(request.user, post)

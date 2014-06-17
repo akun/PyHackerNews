@@ -10,7 +10,33 @@ from pyhn.news.models import Comment
 from pyhn.news.tests.base import AnonymousTestCase, AuthorizedTestCase
 
 
-class CommentTestCase(AuthorizedTestCase):
+class AnonymousCommentTestCase(AnonymousTestCase):
+
+    def test_comment_get_200(self):
+        response = self.client.get(reverse('news:comment', kwargs={
+            'post_id': self.POST_ID,
+        }))
+        self.assertEqual(response.status_code, 200)
+        self.assertNotEqual(0, response.context['comments'].count())
+
+    def test_comment_get_200_no_comments(self):
+        Comment.objects.all().delete()
+
+        response = self.client.get(reverse('news:comment', kwargs={
+            'post_id': self.POST_ID,
+        }))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(0, response.context['comments'].count())
+
+    def test_comment_post_failed(self):
+        response = self.client.post(reverse('news:comment', kwargs={
+            'post_id': self.POST_ID,
+        }))
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue('?next=' in response.url)
+
+
+class AuthorizedCommentTestCase(AuthorizedTestCase):
 
     def test_comment_get_200(self):
         response = self.client.get(reverse('news:comment', kwargs={
