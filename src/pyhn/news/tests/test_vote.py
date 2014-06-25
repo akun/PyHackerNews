@@ -5,8 +5,8 @@ import json
 
 from django.core.urlresolvers import reverse
 
+from pyhn.libs.tests.base import AnonymousTestCase, AuthorizedTestCase
 from pyhn.news.models import CommentVote, Vote
-from pyhn.news.tests.base import AnonymousTestCase, AuthorizedTestCase
 
 
 class AnonymousPostVoteTestCase(AnonymousTestCase):

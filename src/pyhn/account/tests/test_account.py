@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.core.validators import EmailValidator
 
 from pyhn.account.models import Profile
-from pyhn.news.tests.base import AnonymousTestCase, AuthorizedTestCase
+from pyhn.libs.tests.base import AnonymousTestCase, AuthorizedTestCase
 
 
 class AnonymousAccountTestCase(AnonymousTestCase):

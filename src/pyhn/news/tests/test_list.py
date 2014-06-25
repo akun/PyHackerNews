@@ -3,7 +3,7 @@
 
 from django.core.urlresolvers import reverse
 
-from pyhn.news.tests.base import AnonymousTestCase
+from pyhn.libs.tests.base import AnonymousTestCase
 
 
 class AnonymousListTestCase(AnonymousTestCase):

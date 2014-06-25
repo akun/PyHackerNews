@@ -6,8 +6,8 @@ import json
 from django import forms
 from django.core.urlresolvers import reverse
 
+from pyhn.libs.tests.base import AuthorizedTestCase
 from pyhn.news.models import Post
-from pyhn.news.tests.base import AuthorizedTestCase
 
 
 class PostTestCase(AuthorizedTestCase):

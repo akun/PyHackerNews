@@ -2,7 +2,7 @@
 
 
 from pyhn.account.models import Profile
-from pyhn.news.tests.base import AnonymousTestCase
+from pyhn.libs.tests.base import AnonymousTestCase
 
 
 class ProfileTestCase(AnonymousTestCase):

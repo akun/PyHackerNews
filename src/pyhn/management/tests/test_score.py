@@ -4,8 +4,8 @@
 from django.core.management import call_command
 
 from pyhn.account.models import Profile
+from pyhn.libs.tests.base import AnonymousTestCase as TestCase
 from pyhn.news.models import Comment, Post, get_score
-from pyhn.news.tests.base import AnonymousTestCase as TestCase
 
 
 class CommandsTestCase(TestCase):
