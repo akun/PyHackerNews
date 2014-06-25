@@ -1,5 +1,3 @@
 -r common.txt
 
 Sphinx==1.2.2
-rst2pdf==0.93dev
-hieroglyph==0.6.5
