@@ -2,7 +2,6 @@ SRC_DIR = src
 DOC_DIR = docs
 PROJECT_DIR = pyhn
 MAKE = make
-export SECRET_KEY='dev'
 
 all:
 	make installall
@@ -43,7 +42,7 @@ clean:
 	find $(SRC_DIR) -name "*.pyc" | xargs rm
 
 run:
-	cd $(SRC_DIR) && python manage.py runserver 0.0.0.0:$(PORT) --settings=pyhn.settings.dev
+	cd $(SRC_DIR) && python manage.py runserver 0.0.0.0:$(PORT)
 
 score:
-	python $(SRC_DIR)/manage.py score --settings=pyhn.settings.prod
+	python $(SRC_DIR)/manage.py score
