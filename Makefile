@@ -5,10 +5,20 @@ MAKE = make
 export SECRET_KEY='dev'
 
 all:
+	make installall
 	make lint
 	make test
 	make html
 	make clean
+
+install:
+	pip install -r requirements.txt
+
+installall:
+	pip install -r requirements/prod.txt
+	pip install -r requirements/dev.txt
+	pip install -r requirements/docs.txt
+	pip install -r requirements/test.txt
 
 lint:
 	pylint --rcfile=.pylintrc --load-plugins pylint_django -E $(SRC_DIR)/$(PROJECT_DIR)
