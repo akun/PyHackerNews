@@ -1,1 +1,3 @@
 -r common.txt
+
+pylint-django==0.4
