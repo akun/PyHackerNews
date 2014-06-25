@@ -35,7 +35,9 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="{% url 'news:newest' %}">{% trans 'New' %}</a></li>
+            {% if perms.can_submit %}
             <li><a href="{% url 'news:submit' %}">{% trans 'Submit' %}</a></li>
+            {% endif %}
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if request.user.is_authenticated %}

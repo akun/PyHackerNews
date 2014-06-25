@@ -15,6 +15,9 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-score', '-created_at']
+        permissions = (
+            ('can_submit', 'Can submit new post'),
+        )
 
     def __unicode__(self):
         return self.title

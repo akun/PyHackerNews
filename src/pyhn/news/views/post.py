@@ -3,7 +3,7 @@
 
 import json
 
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
@@ -14,6 +14,7 @@ from pyhn.news.models import Post
 
 
 @login_required
+@permission_required('news.can_submit')
 @require_http_methods(['GET', 'POST'])
 def submit(request):
 
