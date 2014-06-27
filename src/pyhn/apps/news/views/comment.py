@@ -10,9 +10,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.views.decorators.http import require_POST, require_http_methods
 
-from pyhn.news.forms import CommentForm, ReplyForm
-from pyhn.news.models import Comment, Post
-from pyhn.news.views.common import format_post
+from pyhn.apps.news.forms import CommentForm, ReplyForm
+from pyhn.apps.news.models import Comment, Post
+from pyhn.apps.news.views.common import format_post
 
 
 @require_http_methods(['GET', 'POST'])

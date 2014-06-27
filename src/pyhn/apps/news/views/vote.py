@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_POST
 
-from pyhn.news.models import Comment, Post
+from pyhn.apps.news.models import Comment, Post
 
 
 @require_POST

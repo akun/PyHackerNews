@@ -4,7 +4,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from pyhn.news.models import Comment, Post
+from pyhn.apps.news.models import Comment, Post
 
 
 class PostForm(forms.Form):

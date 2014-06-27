@@ -9,8 +9,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.views.decorators.http import require_POST, require_http_methods
 
-from pyhn.news.forms import PostForm
-from pyhn.news.models import Post
+from pyhn.apps.news.forms import PostForm
+from pyhn.apps.news.models import Post
 
 
 @login_required

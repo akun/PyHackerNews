@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 
-from pyhn.account.models import Profile
+from pyhn.apps.account.models import Profile
 from pyhn.libs.tests.base import AnonymousTestCase
 
 

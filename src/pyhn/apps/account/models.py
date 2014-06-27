@@ -4,7 +4,7 @@
 from django.contrib.auth.models import User as BaseUser
 from django.db import models
 
-from pyhn.news.models import CommentVote, Vote
+from pyhn.apps.news.models import CommentVote, Vote
 
 
 class Profile(BaseUser):

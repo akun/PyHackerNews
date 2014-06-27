@@ -7,8 +7,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.views.decorators.http import require_GET
 
-from pyhn.account.forms import AccountForm
-from pyhn.account.models import Profile
+from pyhn.apps.account.forms import AccountForm
+from pyhn.apps.account.models import Profile
 
 
 @login_required

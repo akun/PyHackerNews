@@ -3,7 +3,7 @@
 
 from django.test import TestCase
 
-from pyhn.news.views.common import get_paged_object
+from pyhn.apps.news.views.common import get_paged_object
 
 
 class PaginatorTestCase(TestCase):

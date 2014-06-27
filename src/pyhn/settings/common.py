@@ -39,9 +39,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
-    'pyhn',
-    'pyhn.news',
-    'pyhn.account',
+    'pyhn.libs',
+    'pyhn.apps.news',
+    'pyhn.apps.account',
 )
 
 MIDDLEWARE_CLASSES = (

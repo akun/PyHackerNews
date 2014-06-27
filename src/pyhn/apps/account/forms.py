@@ -4,7 +4,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from pyhn.account.models import Profile
+from pyhn.apps.account.models import Profile
 
 
 class AccountForm(forms.Form):

@@ -5,7 +5,7 @@ from django import forms
 from django.core.urlresolvers import reverse
 from django.core.validators import EmailValidator
 
-from pyhn.account.models import Profile
+from pyhn.apps.account.models import Profile
 from pyhn.libs.tests.base import AnonymousTestCase, AuthorizedTestCase
 
 

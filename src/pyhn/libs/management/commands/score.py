@@ -3,8 +3,8 @@
 
 from django.core.management.base import BaseCommand, CommandError
 
-from pyhn.account.models import Profile
-from pyhn.news.models import Comment, Post, get_score
+from pyhn.apps.account.models import Profile
+from pyhn.apps.news.models import Comment, Post, get_score
 
 
 class Command(BaseCommand):

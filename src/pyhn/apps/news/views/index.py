@@ -4,8 +4,8 @@
 from django.shortcuts import render
 from django.views.decorators.http import require_GET
 
-from pyhn.news.models import Post
-from pyhn.news.views.common import format_post, get_paged_object
+from pyhn.apps.news.models import Post
+from pyhn.apps.news.views.common import format_post, get_paged_object
 
 
 @require_GET

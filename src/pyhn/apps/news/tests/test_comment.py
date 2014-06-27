@@ -6,8 +6,8 @@ import json
 from django import forms
 from django.core.urlresolvers import reverse
 
+from pyhn.apps.news.models import Comment
 from pyhn.libs.tests.base import AnonymousTestCase, AuthorizedTestCase
-from pyhn.news.models import Comment
 
 
 class AnonymousCommentTestCase(AnonymousTestCase):
