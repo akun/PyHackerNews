@@ -22,16 +22,15 @@ def comment_vote(request, comment_id):
 
 def do_vote(request, object_id, object_class):
     set_dict = {
-            Post: 'vote_set',
-            Comment: 'commentvote_set',
+        Post: 'vote_set',
+        Comment: 'commentvote_set',
     }
     if not request.user.is_authenticated():
         ret = {'code': 100, 'msg': 'need login', 'result': {'id': object_id}}
     else:
         object_instance = get_object_or_404(object_class, id=object_id)
-        if getattr(object_instance, set_dict[object_class]).filter(
-            user=request.user
-        ).count():
+        votes = getattr(object_instance, set_dict[object_class])
+        if votes.filter(user=request.user).count():
             ret = {
                 'code': 101, 'msg': 'has voted', 'result': {'id': object_id}
             }
