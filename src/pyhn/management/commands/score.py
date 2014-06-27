@@ -4,7 +4,7 @@
 from django.core.management.base import BaseCommand, CommandError
 
 from pyhn.apps.account.models import Profile
-from pyhn.apps.news.models import Comment, Post, get_score
+from pyhn.apps.news.models import Comment, CommentVote, Post, Vote, get_score
 
 
 class Command(BaseCommand):
@@ -24,4 +24,15 @@ class Command(BaseCommand):
             comment.save()
 
         for profile in Profile.objects.all():
-            profile.calc_score()
+            score = calc_score(profile)
+            profile.score = score
+            profile.save()
+
+
+def calc_score(profile):
+    """score = post vote count + comment vote count"""
+
+    post_vote_count = Vote.objects.filter(user=profile).count()
+    comment_vote_count = CommentVote.objects.filter(user=profile).count()
+    score = post_vote_count + comment_vote_count
+    return score

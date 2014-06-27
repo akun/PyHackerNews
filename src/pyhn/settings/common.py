@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
+    'pyhn',
     'pyhn.libs',
     'pyhn.apps.news',
     'pyhn.apps.account',
