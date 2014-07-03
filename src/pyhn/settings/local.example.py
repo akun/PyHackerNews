@@ -44,3 +44,11 @@
 # Copyright
 # eg: PYHN_COPYRIGHT = '&copy; 2014, <a href="https://github.com/akun">akun</a>'
 #PYHN_COPYRIGHT = ''
+
+# new register user can submit news
+# if need limit new register user for submitting news, we can set as `False`
+#
+# * True - no limit
+# * False - new register user can not submit news(make one user can
+#           submit news, you need add `can_submit` permission on this user)
+#PYHN_NEW_USER_CAN_SUBMIT = True

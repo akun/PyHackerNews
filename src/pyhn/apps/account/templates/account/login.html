@@ -11,6 +11,9 @@
     <ul>
       {% include 'social_auth_list.html' %}
     </ul>
+    {% if not PYHN_NEW_USER_CAN_SUBMIT %}
+    <p>{% trans 'Ops! you have no permission for submitting news..' %}</p>
+    {% endif %}
   </div>
 </div>
 
