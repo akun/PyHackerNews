@@ -32,8 +32,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ request.user.email|gravatar_url }}" /> {{ request.user.username }} <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="{% url 'social:begin' 'github' %}">{% trans 'Sign in with GitHub' %}</a></li>
-            <li><a href="{% url 'social:begin' 'weibo' %}">{% trans 'Sign in with Sina Weibo' %}</a></li>
+            {% include 'social_auth_list.html' %}
           </ul>
         </li>
         {% endif %}

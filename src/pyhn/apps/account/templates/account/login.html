@@ -9,7 +9,7 @@
   </div>
   <div class="panel-body">
     <ul>
-      <li><a href="{% url 'social:begin' 'github' %}">{% trans 'GitHub' %}</a></li>
+      {% include 'social_auth_list.html' %}
     </ul>
   </div>
 </div>
