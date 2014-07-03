@@ -1,6 +1,5 @@
 {% load staticfiles %}
 {% load i18n %}
-{% load pyhn_extras %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +11,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
 
-    <title>Python Hacker News</title>
+    <title>{% if PYHN_TITLE %}{{ PYHN_TITLE }}{% else %}Python Hacker News{% endif %}</title>
 
     <link rel="stylesheet" type="text/css" href="{% static 'libs/bootstrap-3.1.1-dist/css/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'libs/sco.js/css/sco.message.css' %}" />
@@ -21,56 +20,11 @@
 
   <body>
 
-    <div class="navbar navbar-default navbar-fix-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="{% url 'index' %}">Python Hacker News</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="{% url 'news:newest' %}">{% trans 'New' %}</a></li>
-            {% if perms.can_submit %}
-            <li><a href="{% url 'news:submit' %}">{% trans 'Submit' %}</a></li>
-            {% endif %}
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            {% if request.user.is_authenticated %}
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ request.user.email|gravatar_url }}" /> {{ request.user.username }} <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="{% url 'account:index' %}">Account</a></li>
-                <li><a href="{% url 'account:logout' %}">Sign Out</a></li>
-              </ul>
-            </li>
-            {% else %}
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ request.user.email|gravatar_url }}" /> {{ request.user.username }} <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="{% url 'social:begin' 'github' %}">{% trans 'Sign in with GitHub' %}</a></li>
-                <li><a href="{% url 'social:begin' 'weibo' %}">{% trans 'Sign in with Sina Weibo' %}</a></li>
-              </ul>
-            </li>
-            {% endif %}
-          </ul>
-        </div>
-      </div>
-    </div>
-
+    {% include 'header.html' %}
     <div class="container">
       {% block container %}{% endblock %}
     </div>
-
-    <div id="footer">
-      <div class="container">
-        <p class="text-muted">&copy; 2014 Python Hacker News, akun</p>
-      </div>
-    </div>
+    {% include 'footer.html' %}
 
     <script src="{% static 'libs/jquery-1.11.0.min.js' %}"></script>
     <script src="{% static 'libs/jquery.cookie.js' %}"></script>

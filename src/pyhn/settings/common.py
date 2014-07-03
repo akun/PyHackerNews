@@ -103,4 +103,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'social.apps.django_app.context_processors.backends',
     'social.apps.django_app.context_processors.login_redirect',
+    'pyhn.libs.context_processors.pyhn_info',
 )
+
+
+PYHN_TITLE = ''
+PYHN_COPYRIGHT = ''

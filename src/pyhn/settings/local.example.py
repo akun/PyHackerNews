@@ -36,3 +36,11 @@
 # Sina Weibo
 #SOCIAL_AUTH_WEIBO_KEY = ''
 #SOCIAL_AUTH_WEIBO_SECRET = ''
+
+# Site Title
+# eg: PYHN_TITLE = "akun's News"
+#PYHN_TITLE = ''
+
+# Copyright
+# eg: PYHN_COPYRIGHT = '&copy; 2014, <a href="https://github.com/akun">akun</a>'
+#PYHN_COPYRIGHT = ''

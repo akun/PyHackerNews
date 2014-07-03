@@ -64,6 +64,11 @@ Features
   + [o] user score
   + [o] calculate score in background
 
+* [o] Customrize
+
+  + [o] Title
+  + [o] Copyright
+
 License
 -------
 
