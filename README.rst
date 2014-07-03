@@ -49,6 +49,10 @@ Features
 * [o] Auth/Account
 
   + [o] login with social site's oauth
+
+    - [o] GitHub
+    - [o] Sina Webo
+
   + [o] show social site's oauth list
   + [o] edit personal account info: username, email(for gravatar). **login required**
   + [o] show someone account info: username for show, score, about

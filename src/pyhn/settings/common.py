@@ -95,6 +95,7 @@ STATICFILES_DIRS = (
 LOGIN_REDIRECT_URL = '/'
 AUTHENTICATION_BACKENDS = (
     'social.backends.github.GithubOAuth2',
+    'social.backends.weibo.WeiboOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -103,5 +104,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'social.apps.django_app.context_processors.backends',
     'social.apps.django_app.context_processors.login_redirect',
 )
+
+# GitHub
 SOCIAL_AUTH_GITHUB_KEY = ''
 SOCIAL_AUTH_GITHUB_SECRET = ''
+
+# Sina Weibo
+SOCIAL_AUTH_WEIBO_KEY = ''
+SOCIAL_AUTH_WEIBO_SECRET = ''
