@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
+    'bootstrap_themes',
     'pyhn',
     'pyhn.libs',
     'pyhn.apps.news',
@@ -124,3 +125,5 @@ PYHN_COPYRIGHT = ''
 PYHN_NEW_USER_CAN_SUBMIT = True
 
 PYHN_GOOGLE_ANALYTICS_UA = ''
+
+PYHN_THEME = 'default'

@@ -69,6 +69,7 @@ Features
   + [o] Title
   + [o] Copyright
   + [o] Google Analytics
+  + [o] Bootstrap Themes
 
 License
 -------

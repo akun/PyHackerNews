@@ -21,6 +21,12 @@
 # eg: PYHN_GOOGLE_ANALYTICS_UA = 'UA-99999999-9'
 #PYHN_GOOGLE_ANALYTICS_UA = ''
 
+# Bootstrap Theme
+# eg: PYHN_THEME = 'united'
+# more: http://bootswatch.com/
+# NOTICE: theme name is `Lower Case`
+#PYHN_THEME = ''
+
 ###############
 # Development #
 ###############
