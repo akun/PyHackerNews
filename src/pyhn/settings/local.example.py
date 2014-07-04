@@ -17,6 +17,9 @@
 #   }
 #}
 
+# Google Analytics
+# eg: PYHN_GOOGLE_ANALYTICS_UA = 'UA-99999999-9'
+#PYHN_GOOGLE_ANALYTICS_UA = ''
 
 ###############
 # Development #
