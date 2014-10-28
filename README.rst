@@ -71,6 +71,27 @@ Features
   + [o] Google Analytics
   + [o] Bootstrap Themes
 
+Contributing
+------------
+
+fork it and init env
+
+::
+
+   $ git clone git@github.com:yourname/PyHackerNews.git
+   $ cd PyHackerNews
+   $ virtualenv .
+   $ source bin/activate
+   $ make
+
+add features or resolve bugfix, then run test
+
+::
+
+   $ make test
+
+make pull request
+
 License
 -------
 
