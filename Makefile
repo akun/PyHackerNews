@@ -4,19 +4,16 @@ PROJECT_DIR = pyhn
 MAKE = make
 
 all:
-	make installall
+	make install
 	make test
 	make html
 	make clean
 
 install:
-	pip install -r requirements.txt
-
-installall:
-	pip install -r requirements/prod.txt
-	pip install -r requirements/dev.txt
-	pip install -r requirements/docs.txt
-	pip install -r requirements/test.txt
+	pip install -r requirements/prod.txt -q
+	pip install -r requirements/dev.txt -q
+	pip install -r requirements/docs.txt -q
+	pip install -r requirements/test.txt -q
 
 lint:
 	prospector $(SRC_DIR) -s veryhigh
