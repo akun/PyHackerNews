@@ -92,6 +92,14 @@ add features or resolve bugfix, then run test
 
 make pull request
 
+Changelog
+---------
+
+0.0.1
+~~~~~
+
+* init project
+
 License
 -------
 
