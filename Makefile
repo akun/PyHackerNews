@@ -5,7 +5,6 @@ MAKE = make
 
 all:
 	make installall
-	make lint
 	make test
 	make html
 	make clean
@@ -20,13 +19,7 @@ installall:
 	pip install -r requirements/test.txt
 
 lint:
-	pylint --rcfile=.pylintrc --load-plugins pylint_django -E $(SRC_DIR)/$(PROJECT_DIR)
-
-lintall:
-	pylint --rcfile=.pylintrc --load-plugins pylint_django $(SRC_DIR)/$(PROJECT_DIR)
-
-lintpart:
-	pylint --rcfile=.pylintrc --load-plugins pylint_django -d C0111,R0901,R0904,I0011 $(SRC_DIR)/$(PROJECT_DIR)
+	prospector $(SRC_DIR) -s veryhigh
 
 test:
 	python $(SRC_DIR)/manage.py test --failfast --nocapture --with-coverage --cover-package=$(PROJECT_DIR) --cover-erase --settings=pyhn.settings.test
