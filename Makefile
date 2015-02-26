@@ -2,6 +2,7 @@ SRC_DIR = src
 DOC_DIR = docs
 PROJECT_DIR = pyhn
 MAKE = make
+PORT = 8080
 
 all:
 	make install
