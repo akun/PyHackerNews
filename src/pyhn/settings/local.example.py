@@ -6,16 +6,32 @@
 ##############
 #from pyhn.settings.prod import *  # pylint: disable=W0401,W0614
 
-
 #ALLOWED_HOSTS = ['.example.com']
 #DATABASES = {
 #   'default': {
 #       'ENGINE': 'django.db.backends.mysql',
-#       'NAME': '',
-#       'USER': '',
-#       'PASSWORD': '',
+#       'NAME': 'pyhn_production',
+#       'USER': 'pyhn',
+#       'PASSWORD': 'your password',
 #   }
 #}
+
+###############
+# Development #
+###############
+#from pyhn.settings.dev import *  # pylint: disable=W0401,W0614
+
+
+##########
+# Common #
+##########
+# see also:
+# * https://docs.djangoproject.com/en/1.7/ref/settings/#secret-key
+# * https://docs.djangoproject.com/en/1.7/topics/signing/
+#
+# Generate Django Secret Key: http://www.miniwebtool.com/django-secret-key-generator/
+# !!!!required!!!!
+#SECRET_KEY = ''
 
 # Google Analytics
 # eg: PYHN_GOOGLE_ANALYTICS_UA = 'UA-99999999-9'
@@ -27,22 +43,13 @@
 # NOTICE: theme name is `Lower Case`
 #PYHN_THEME = ''
 
-###############
-# Development #
-###############
-#from pyhn.settings.dev import *  # pylint: disable=W0401,W0614
-
-
-##########
-# Common #
-##########
-#SECRET_KEY = ''
-
 # GitHub
+# How to get URL:
 #SOCIAL_AUTH_GITHUB_KEY = ''
 #SOCIAL_AUTH_GITHUB_SECRET = ''
 
 # Sina Weibo
+# How to get URL:
 #SOCIAL_AUTH_WEIBO_KEY = ''
 #SOCIAL_AUTH_WEIBO_SECRET = ''
 
