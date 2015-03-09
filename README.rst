@@ -191,6 +191,13 @@ make pull request
 Changelog
 ---------
 
+0.0.2
+~~~~~
+
+* update Python requirements
+* docs: Manual Install
+* `make run` support run by `PORT`
+
 0.0.1
 ~~~~~
 
