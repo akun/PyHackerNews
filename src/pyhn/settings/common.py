@@ -130,3 +130,7 @@ PYHN_NEW_USER_CAN_SUBMIT = True
 PYHN_GOOGLE_ANALYTICS_UA = ''
 
 PYHN_THEME = 'default'
+
+PYHN_RSS_TITLE = 'Python Hacker News'
+PYHN_RSS_DESCRIPTION = 'Update on Python Hacker News'
+PYHN_RSS_SIZE = 10

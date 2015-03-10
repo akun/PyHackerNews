@@ -3,6 +3,8 @@
 
 from django.conf.urls import patterns, include, url
 
+from pyhn.libs.rss import NewsFeed
+
 
 urlpatterns = patterns(
     '',
@@ -16,4 +18,9 @@ urlpatterns = patterns(
         r'^user/(?P<user_id>\d+)/', 'pyhn.apps.account.views.user_profile',
         name='profile'
     ),
+)
+
+urlpatterns += patterns(
+    '',
+    url(r'^rss/$', NewsFeed(), name='rss'),
 )

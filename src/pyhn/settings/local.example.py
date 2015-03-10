@@ -68,3 +68,13 @@
 # * False - new register user can not submit news(make one user can
 #           submit news, you need add `can_submit` permission on this user)
 #PYHN_NEW_USER_CAN_SUBMIT = True
+
+# rss settings
+# eg: PYHN_RSS_TITLE = 'Python Hacker News'
+#PYHN_RSS_TITLE = ''
+
+# eg: PYHN_RSS_DESCRIPTION = 'Update on Python Hacker News'
+#PYHN_RSS_DESCRIPTION = ''
+
+# eg: PYHN_RSS_SIZE = 10
+#PYHN_RSS_SIZE = 10

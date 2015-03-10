@@ -167,6 +167,12 @@ Features
   + [o] Google Analytics
   + [o] Bootstrap Themes
 
+* [o] RSS
+
+  + [o] in news
+  + [ ] in user
+  + [ ] in comment
+
 Contributing
 ------------
 
