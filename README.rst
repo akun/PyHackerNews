@@ -197,6 +197,11 @@ make pull request
 Changelog
 ---------
 
+0.0.3
+~~~~~
+
+* support news RSS
+
 0.0.2
 ~~~~~
 

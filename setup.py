@@ -15,7 +15,7 @@ def get_reqs():
 
 setup(
     name='PyHackerNews',
-    version='0.0.1',
+    version='0.0.3',
     description='Hacker News, write in Python',
     author='akun',
     author_email='6awkun@gmail.com',
