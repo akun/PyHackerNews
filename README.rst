@@ -167,6 +167,12 @@ Features
   + [o] Google Analytics
   + [o] Bootstrap Themes
 
+* [o] RSS
+
+  + [o] in news
+  + [ ] in user
+  + [ ] in comment
+
 Contributing
 ------------
 
@@ -190,6 +196,18 @@ make pull request
 
 Changelog
 ---------
+
+0.0.3
+~~~~~
+
+* support news RSS
+
+0.0.2
+~~~~~
+
+* update Python requirements
+* docs: Manual Install
+* `make run` support run by `PORT`
 
 0.0.1
 ~~~~~
