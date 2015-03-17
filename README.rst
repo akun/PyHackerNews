@@ -23,7 +23,7 @@ TODO
 Manual Install
 --------------
 
-for example in Ubuntu 14.04 + MySQL + uWSGI + Nginx
+It requires Python 2.7, for example in Ubuntu 14.04 + MySQL + uWSGI + Nginx
 
 Prepare
 ~~~~~~~
